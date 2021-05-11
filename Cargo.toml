@@ -3,6 +3,8 @@ name = "mocker"
 version = "0.1.0"
 authors = ["inxaneninja <inxaneninja@gmail.com>"]
 edition = "2018"
+description = "A library for transforming text with uppercase and lowercase letters, resembling the Spongebob Mock Meme."
+license = "GPL-3.0-or-later"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
