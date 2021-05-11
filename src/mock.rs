@@ -5,6 +5,16 @@ pub trait Mocker {
     fn uppercase(&mut self) -> bool;
 }
 
+/// Function that performs the mocking. It takes in a string type and a mocker by reference.
+/// It will return a String with the mocking performed.
+/// # Examples
+///
+/// ```
+/// let data = String::from("hello world");
+/// let result = mock(&data, &AlternatingMocker::new());
+/// 
+/// assert_eq!(String::from("hElLo wOrLd"), result);
+/// ```
 pub fn mock<T: AsRef<str>, U: Mocker>(text: &T, mocker: &mut U) -> String {
     let data = text.as_ref();
 
