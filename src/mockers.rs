@@ -13,6 +13,10 @@ impl AlternatingMocker {
         }
     }
     /// Creates a new AlternatingMocker, and allows you to control the case of the starting letter with the parameter.
+    ///
+    /// ```
+    /// let mocked = mock(&text, &mut AlternatingMocker::new_from_bool(true));
+    /// ```
     pub fn new_from_bool(starting_case: bool) -> Self {
         Self {
             current: starting_case
@@ -44,6 +48,16 @@ impl Mocker for RandomMocker {
 }
 
 /// A built-in Mocker, which takes in a closure that returns a boolean. Useful if you don't feel like implementing the Mocker trait yourself.
+///
+/// Example of a ClosureMocker which makes all the letters uppercase:
+///
+/// ```
+/// let text = "hello, World!";
+/// let mut mocker = ClosureMocker::new(|| {
+///    true
+/// });
+/// assert_eq!("HELLO, WORLD!", mock(&text, &mut mocker));
+/// ```
 pub struct ClosureMocker<T: Fn() -> bool> {
     closure: T
 }
