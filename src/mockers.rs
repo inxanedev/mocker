@@ -25,6 +25,7 @@ impl AlternatingMocker {
 }
 
 impl Mocker for AlternatingMocker {
+    /// Toggles the state of the current case and returns the old one.
     fn uppercase(&mut self) -> bool {
         self.current = !self.current;
         !self.current
@@ -42,6 +43,7 @@ impl RandomMocker {
 }
 
 impl Mocker for RandomMocker {
+    /// Returns a random boolean (which is also the case of the letter)
     fn uppercase(&mut self) -> bool {
         rand::random()
     }
@@ -74,6 +76,7 @@ impl<T: Fn() -> bool> ClosureMocker<T> {
 }
 
 impl<T: Fn() -> bool> Mocker for ClosureMocker<T> {
+    /// Executes the closure and returns the value.
     fn uppercase(&mut self) -> bool {
         (self.closure)()
     }
